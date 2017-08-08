@@ -40,12 +40,24 @@ public class TransactionResource {
 
         html += "<ul>";
         for (Transaction transaction : transactions.values()) {
+
             int id = transaction.getId();
-            html += "<li><a href='/transaction/" + id + "'>" + id +" - " + transaction.toString() + "</a></li>";
+            String from = transaction.getFrom().getName();
+            String to = transaction.getTo().getName();
+            int amount = transaction.getAmount();
+
+            html += "<li>" + id +" - " + generateHref("/user", from) + " gives "
+                    + generateHref("/detail",amount + " bitcoins")
+                    + " to " + generateHref("/user", to) + "</li>";
         }
         html += "</ul>";
 
         return html;
+    }
+
+    /** Generates a href string that goes to the destination and shows the text */
+    private String generateHref(String destination, String text) {
+        return "<a href='"+ destination + "'>" + text + "</a>";
     }
 
 }
