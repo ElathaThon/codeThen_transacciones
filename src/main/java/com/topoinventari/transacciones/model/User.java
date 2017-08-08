@@ -7,10 +7,16 @@ public class User {
 
     private String name;
     private int credit;
+    private int id;
 
-    public User(String name, int credit) {
+    public User(int id, String name, int credit) {
+        this.id = id;
         this.name = name;
         this.credit = credit;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {

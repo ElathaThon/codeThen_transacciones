@@ -23,10 +23,10 @@ public class TransactionResource {
 
     public TransactionResource() {
 
-        User pepe = new User("Pepe",60);
-        User mary = new User("Mary",30);
-        User lucy = new User("Lucy",40);
-        User johny = new User("Johny",50);
+        User pepe = new User(1,"Pepe",60);
+        User mary = new User(2,"Mary",30);
+        User lucy = new User(3,"Lucy",40);
+        User johny = new User(4,"Johny",50);
 
         transactions = new HashMap<>();
         transactions.put(1, new Transaction(1, pepe, mary,10));
