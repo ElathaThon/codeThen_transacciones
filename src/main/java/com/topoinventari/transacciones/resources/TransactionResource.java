@@ -3,12 +3,19 @@ package com.topoinventari.transacciones.resources;
 import com.topoinventari.transacciones.model.Transaction;
 import com.topoinventari.transacciones.model.User;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Created by elatha on 8/8/17.
  */
+
+@Path("/transactions")
+@Produces(MediaType.TEXT_HTML)
 public class TransactionResource {
 
     private Map<Integer,Transaction> transactions;
@@ -25,6 +32,20 @@ public class TransactionResource {
         transactions.put(2, new Transaction(2, lucy, johny,5));
         transactions.put(3, new Transaction(3, mary, pepe,7));
 
+    }
+
+    @GET
+    public String transactionsList() {
+        String html = "<h1>TRANSACTIONS</h1>";
+
+        html += "<ul>";
+        for (Transaction transaction : transactions.values()) {
+            int id = transaction.getId();
+            html += "<li><a href='/transaction/" + id + "'>" + id +" - " + transaction.toString() + "</a></li>";
+        }
+        html += "</ul>";
+
+        return html;
     }
 
 }
