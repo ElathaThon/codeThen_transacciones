@@ -47,4 +47,8 @@ public class Transaction {
         return concept;
     }
 
+    @Override
+    public String toString() {
+        return "Transaccion de " + this.from.getName() + " to " + this.to.getName() + "with an amount of " + this.amount + "<br>Concept: " + this.concept;
+    }
 }
