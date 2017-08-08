@@ -34,4 +34,9 @@ public class User {
     public void withdrawCredit(int amount) {
         this.credit -= amount;
     }
+
+    @Override
+    public String toString() {
+        return "User with name " + this.name + " have " + credit + " bitcoins.";
+    }
 }
