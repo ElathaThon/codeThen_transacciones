@@ -1,6 +1,7 @@
 package com.topoinventari.transacciones;
 
 
+import com.topoinventari.transacciones.resources.TransactionResource;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -25,7 +26,10 @@ public class TransaccionesApplication extends Application<TransaccionesConfigura
     @Override
     public void run(TransaccionesConfiguration configuration, Environment environment) {
 
+        TransactionResource transactionResource = new TransactionResource();
 
+        //Tell dropwizard to setup my resource
+        environment.jersey().register(transactionResource);
 
     }
 }
