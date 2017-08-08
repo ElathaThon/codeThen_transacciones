@@ -14,7 +14,7 @@ public class TransaccionesApplication extends Application<TransaccionesConfigura
 
     @Override
     public String getName() {
-        return "books!!!! :D";
+        return "Transactions";
     }
 
     @Override
@@ -24,6 +24,7 @@ public class TransaccionesApplication extends Application<TransaccionesConfigura
 
     @Override
     public void run(TransaccionesConfiguration configuration, Environment environment) {
+
 
 
     }
