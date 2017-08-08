@@ -5,6 +5,7 @@ import com.topoinventari.transacciones.model.User;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.HashMap;
@@ -47,7 +48,7 @@ public class TransactionResource {
             int amount = transaction.getAmount();
 
             html += "<li>" + id +" - " + generateHref("/user", from) + " gives "
-                    + generateHref("/detail",amount + " bitcoins")
+                    + generateHref("/transactions/" + id,amount + " bitcoins")
                     + " to " + generateHref("/user", to) + "</li>";
         }
         html += "</ul>";
@@ -55,9 +56,32 @@ public class TransactionResource {
         return html;
     }
 
+
+    @GET
+    @Path("/{id}")
+    public String transactionDetail(@PathParam("id") int transactionId){
+
+        Transaction transaction = transactions.get(transactionId);
+
+        if (transaction != null) {
+            return transaction.toString();
+        } else {
+            return "Transaction not found! :(";
+        }
+
+
+    }
+
+
+
+
+
+
     /** Generates a href string that goes to the destination and shows the text */
     private String generateHref(String destination, String text) {
         return "<a href='"+ destination + "'>" + text + "</a>";
     }
+
+
 
 }
