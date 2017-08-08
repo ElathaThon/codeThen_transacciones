@@ -25,10 +25,10 @@ public class UsersRecource {
     public UsersRecource() {
 
         this.users = new HashMap<>();
-        User pepe = new User(1,"Pepe",60);
-        User mary = new User(2,"Mary",30);
-        User lucy = new User(3,"Lucy",40);
-        User johny = new User(4,"Johny",50);
+        users.put(1, new User(1,"Pepe",60));
+        users.put(2, new User(2,"Mary",30));
+        users.put(3, new User(3,"Lucy",40));
+        users.put(4, new User(4,"Johny",50));
 
     }
 
