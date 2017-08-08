@@ -3,7 +3,9 @@ package com.topoinventari.transacciones.resources;
 import com.topoinventari.transacciones.model.Transaction;
 import com.topoinventari.transacciones.model.User;
 
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.Map;
@@ -13,7 +15,7 @@ import java.util.Map;
  */
 
 
-@Path("/transactions")
+@Path("/users")
 @Produces(MediaType.TEXT_HTML)
 public class UsersRecource {
 
@@ -28,6 +30,20 @@ public class UsersRecource {
 
     }
 
+
+    @GET
+    @Path("/{id}")
+    public String userDetail(@PathParam("id") int userId){
+
+        User user = users.get(userId);
+
+        if (user != null){
+            return user.toString();
+        } else {
+            return "<h1>User not found!!!</h1>";
+        }
+
+    }
 
 
 }
