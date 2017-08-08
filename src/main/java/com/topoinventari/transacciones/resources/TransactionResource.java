@@ -28,7 +28,7 @@ public class TransactionResource {
         User lucy = new User(3,"Lucy",40);
         User johny = new User(4,"Johny",50);
 
-        transactions = new HashMap<>();
+        this.transactions = new HashMap<>();
         transactions.put(1, new Transaction(1, pepe, mary,10));
         transactions.put(2, new Transaction(2, lucy, johny,5));
         transactions.put(3, new Transaction(3, mary, pepe,7));
@@ -44,12 +44,14 @@ public class TransactionResource {
 
             int id = transaction.getId();
             String from = transaction.getFrom().getName();
+            int idFrom = transaction.getFrom().getId();
             String to = transaction.getTo().getName();
+            int idTo = transaction.getTo().getId();
             int amount = transaction.getAmount();
 
-            html += "<li>" + id +" - " + generateHref("/user", from) + " gives "
+            html += "<li>" + id +" - " + generateHref("/users/" + idFrom, from) + " gives "
                     + generateHref("/transactions/" + id,amount + " bitcoins")
-                    + " to " + generateHref("/user", to) + "</li>";
+                    + " to " + generateHref("/users/" + idTo, to) + "</li>";
         }
         html += "</ul>";
 

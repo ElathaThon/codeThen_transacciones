@@ -8,6 +8,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -23,6 +24,7 @@ public class UsersRecource {
 
     public UsersRecource() {
 
+        this.users = new HashMap<>();
         User pepe = new User(1,"Pepe",60);
         User mary = new User(2,"Mary",30);
         User lucy = new User(3,"Lucy",40);
@@ -30,6 +32,16 @@ public class UsersRecource {
 
     }
 
+    @GET
+    public String userList() {
+        String html = "Lista de usuarios";
+
+        for (User user:users.values()) {
+            html += "<li>" + user.getId() +" - " + user.toString() + "</li>";
+        }
+
+        return html;
+    }
 
     @GET
     @Path("/{id}")
@@ -40,7 +52,7 @@ public class UsersRecource {
         if (user != null){
             return user.toString();
         } else {
-            return "<h1>User not found!!!</h1>";
+            return "<h1>User with id "+ userId +" not found!!!</h1>";
         }
 
     }
