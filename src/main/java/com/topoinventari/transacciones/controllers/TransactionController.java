@@ -9,6 +9,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,31 +38,10 @@ public class TransactionController {
     }
 
     @GET
-    public String transactionsList() {
-        String html = "<h1>TRANSACTIONS</h1>";
+    public String transactionsList() throws IOException {
 
-        html += "<ul>";
-        for (Transaction transaction : transactions.values()) {
+        return MustacheUtil.processTemplate("transactionList.html", transactions.values());
 
-            int id = transaction.getId();
-            String from = transaction.getFrom().getName();
-            int idFrom = transaction.getFrom().getId();
-            String to = transaction.getTo().getName();
-            int idTo = transaction.getTo().getId();
-            int amount = transaction.getAmount();
-
-//            html += "<li>" + id +" - " + generateHref("/users/" + idFrom, from) + " gives "
-//                    + generateHref("/transactions/" + id,amount + " bitcoins")
-//                    + " to " + generateHref("/users/" + idTo, to) + "</li>";
-
-            html += "<li>" + id +" - " + MustacheUtil.generateHref("/users/" + idFrom, from) + " gives "
-                    + generateHref("/transactions/" + id,amount + " bitcoins")
-                    + " to " + generateHref("/users/" + idTo, to) + "</li>";
-
-        }
-        html += "</ul>";
-
-        return html;
     }
 
 
