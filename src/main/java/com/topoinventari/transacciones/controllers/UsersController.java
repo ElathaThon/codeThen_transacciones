@@ -1,6 +1,7 @@
 package com.topoinventari.transacciones.controllers;
 
 import com.topoinventari.transacciones.model.User;
+import com.topoinventari.transacciones.util.MustacheUtil;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -49,7 +50,7 @@ public class UsersController {
         User user = users.get(userId);
 
         if (user != null){
-            return user.toString();
+            return MustacheUtil.processTemplate("userDetail.html",user);
         } else {
             return "<h1>User with id "+ userId +" not found!!!</h1>";
         }
