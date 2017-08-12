@@ -1,4 +1,4 @@
-package com.topoinventari.transacciones.resources;
+package com.topoinventari.transacciones.controllers;
 
 import com.topoinventari.transacciones.model.Transaction;
 import com.topoinventari.transacciones.model.User;
@@ -17,11 +17,11 @@ import java.util.Map;
 
 @Path("/transactions")
 @Produces(MediaType.TEXT_HTML)
-public class TransactionResource {
+public class TransactionController {
 
     private Map<Integer,Transaction> transactions;
 
-    public TransactionResource() {
+    public TransactionController() {
 
         User pepe = new User(1,"Pepe",60);
         User mary = new User(2,"Mary",30);

@@ -1,6 +1,5 @@
-package com.topoinventari.transacciones.resources;
+package com.topoinventari.transacciones.controllers;
 
-import com.topoinventari.transacciones.model.Transaction;
 import com.topoinventari.transacciones.model.User;
 
 import javax.ws.rs.GET;
@@ -18,11 +17,11 @@ import java.util.Map;
 
 @Path("/users")
 @Produces(MediaType.TEXT_HTML)
-public class UsersRecource {
+public class UsersController {
 
     private Map<Integer,User> users;
 
-    public UsersRecource() {
+    public UsersController() {
 
         this.users = new HashMap<>();
         users.put(1, new User(1,"Pepe",60));
