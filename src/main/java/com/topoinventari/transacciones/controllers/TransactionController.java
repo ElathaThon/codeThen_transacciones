@@ -1,5 +1,6 @@
 package com.topoinventari.transacciones.controllers;
 
+import com.topoinventari.customutils.MustacheUtil;
 import com.topoinventari.transacciones.model.Transaction;
 import com.topoinventari.transacciones.model.User;
 
@@ -49,9 +50,14 @@ public class TransactionController {
             int idTo = transaction.getTo().getId();
             int amount = transaction.getAmount();
 
-            html += "<li>" + id +" - " + generateHref("/users/" + idFrom, from) + " gives "
+//            html += "<li>" + id +" - " + generateHref("/users/" + idFrom, from) + " gives "
+//                    + generateHref("/transactions/" + id,amount + " bitcoins")
+//                    + " to " + generateHref("/users/" + idTo, to) + "</li>";
+
+            html += "<li>" + id +" - " + MustacheUtil.generateHref("/users/" + idFrom, from) + " gives "
                     + generateHref("/transactions/" + id,amount + " bitcoins")
                     + " to " + generateHref("/users/" + idTo, to) + "</li>";
+
         }
         html += "</ul>";
 
