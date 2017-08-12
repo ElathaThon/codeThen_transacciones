@@ -4,6 +4,7 @@ package com.topoinventari.transacciones;
 import com.topoinventari.transacciones.controllers.TransactionController;
 import com.topoinventari.transacciones.controllers.UsersController;
 import io.dropwizard.Application;
+import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
@@ -21,7 +22,7 @@ public class TransaccionesApplication extends Application<TransaccionesConfigura
 
     @Override
     public void initialize(Bootstrap<TransaccionesConfiguration> bootstrap) {
-        // nothing to do yet
+        bootstrap.addBundle(new AssetsBundle("/assets/","/files"));
     }
 
     @Override
