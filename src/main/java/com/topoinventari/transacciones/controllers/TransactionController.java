@@ -47,12 +47,12 @@ public class TransactionController {
 
     @GET
     @Path("/{id}")
-    public String transactionDetail(@PathParam("id") int transactionId){
+    public String transactionDetail(@PathParam("id") int transactionId) throws IOException {
 
         Transaction transaction = transactions.get(transactionId);
 
         if (transaction != null) {
-            return transaction.toString();
+            return MustacheUtil.processTemplate("transactionDetail.html",transaction);
         } else {
             return "Transaction not found! :(";
         }
