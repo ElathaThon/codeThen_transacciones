@@ -1,26 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Transactions</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
 
-<div>
+{{#partial "content"}}
 
     <h1>TRANSACTIONS</h1>
 
-    <div>
-        <ul>
-            {{#.}}
-            <li>{{id}} - <a href='/users/{{from.id}}'>{{from.name}}</a> gives <a href='/transactions/{{id}}'>{{amount}} bitcoins</a> to
-                <a href='/users/{{to.id}}'>{{to.name}}</a></li>
-            {{/.}}
-        </ul>
-    </div>
+    {{#if transactions}}
+        <div>
+            <ul>
+                {{#transactions}}
+                    <li>{{id}} - <a href='/users/{{from.id}}'>{{from.name}}</a> gives <a href='/transactions/{{id}}'>{{amount}} bitcoins</a> to
+                        <a href='/users/{{to.id}}'>{{to.name}}</a></li>
+                {{/transactions}}
+            </ul>
+        </div>
 
-</div>
+    {{else}}
 
-</body>
-</html>
+        <div>No transactions to show!</div>
+
+    {{/if}}
+
+{{/partial}}
+
+{{> base}}

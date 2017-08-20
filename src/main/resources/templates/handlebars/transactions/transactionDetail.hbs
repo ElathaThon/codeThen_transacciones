@@ -3,7 +3,7 @@
 
     {{#if transaction}}
 
-        <h1>Transaction with id: {{id}}</h1>
+        <h1>Transaction with id: {{transaction.id}}</h1>
 
         <p>Transaccion de <a href='/users/{{transaction.from.id}}'>{{transaction.from.name}}</a> to <a href='/users/{{transaction.to.id}}'>{{transaction.to.name}}</a> with an amount of
             {{transaction.amount}} bitcoins</p>
