@@ -12,30 +12,26 @@ import java.io.StringWriter;
  */
 public class MustacheUtil {
 
+    private static final MustacheFactory mf = new DefaultMustacheFactory();
+    private static final String MustacheTemplatesDirectory = "templates/mustache";
+
     /**
      * Takes template and subtitute the placehoders {{}} for the values.
      * The value can be a collection, a map or another object (getters will be used).
      * */
     public static String processTemplate(String filename, Object value) {
 
-        MustacheFactory mustache = new DefaultMustacheFactory();
-        Mustache template = mustache.compile(filename);
+        Mustache mustache = mf.compile(MustacheTemplatesDirectory + filename + ".mustache");
         StringWriter writer = new StringWriter();
 
         try {
-            template.execute(writer, value).flush();
+            mustache.execute(writer, value).flush();
             return writer.toString();
         } catch (IOException e) {
-            throw new RuntimeException("Error while writting template result", e);
+            throw new RuntimeException("Error while writing template result", e);
         }
 
     }
 
-    /**
-     * Generates a href string that goes to the destination and shows the text.
-     * */
-    public static String generateHref(String destination, String text) {
-        return "<a href='"+ destination + "'>" + text + "</a>";
-    }
 
 }
