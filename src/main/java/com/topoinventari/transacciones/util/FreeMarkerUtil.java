@@ -12,7 +12,7 @@ import java.io.StringWriter;
 public class FreeMarkerUtil {
 
 	private static final Configuration cfg = buildConfig();
-	private static final String freeMarkerTemplatesDirectory = "/templates/freemarker/";
+	private static final String templateDirectory = "/templates/freemarker/";
 
 	/**
 	 * Takes template from filename and substitutes the placeholders using the given value.
@@ -36,7 +36,7 @@ public class FreeMarkerUtil {
 		final Configuration cfg = new Configuration(Configuration.VERSION_2_3_25);
 
 		// Read templates from resources folder -- https://stackoverflow.com/a/31117170/1121497
-		cfg.setClassForTemplateLoading(FreeMarkerUtil.class, freeMarkerTemplatesDirectory);
+		cfg.setClassForTemplateLoading(FreeMarkerUtil.class, templateDirectory);
 
 		cfg.setDefaultEncoding("UTF-8");
 		cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);

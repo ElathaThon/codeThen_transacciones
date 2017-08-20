@@ -13,7 +13,7 @@ import java.io.StringWriter;
 public class MustacheUtil {
 
     private static final MustacheFactory mf = new DefaultMustacheFactory();
-    private static final String MustacheTemplatesDirectory = "templates/mustache";
+    private static final String templateDirectory = "templates/mustache";
 
     /**
      * Takes template and subtitute the placehoders {{}} for the values.
@@ -21,7 +21,7 @@ public class MustacheUtil {
      * */
     public static String processTemplate(String filename, Object value) {
 
-        Mustache mustache = mf.compile(MustacheTemplatesDirectory + filename + ".mustache");
+        Mustache mustache = mf.compile(templateDirectory + filename + ".mustache");
         StringWriter writer = new StringWriter();
 
         try {

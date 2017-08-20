@@ -10,7 +10,7 @@ import java.io.IOException;
 public class HandlebarsUtil {
 
 	private static final Handlebars handlebars = buildHandlebars();
-	private static final String HandlebarsTemplatesDirectory = "/templates/handlebars/";
+	private static final String templateDirectory = "/templates/handlebars/";
 
 	/**
 	 * Takes template from filename and substitutes the placeholders using the given value.
@@ -28,7 +28,7 @@ public class HandlebarsUtil {
 
 	private static Handlebars buildHandlebars() {
 
-		final TemplateLoader loader = new ClassPathTemplateLoader(HandlebarsTemplatesDirectory, ".hbs");
+		final TemplateLoader loader = new ClassPathTemplateLoader(templateDirectory, ".hbs");
 		return new Handlebars(loader);
 	}
 }
