@@ -1,15 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>User</title>
-</head>
-<body>
+{{#partial "content"}}
 
-    <h1>{{name}}</h1>
+    {{#if user}}
 
-    <p>{{.}}</p>
+        <h1>{{user.name}}</h1>
 
+        <p>{{user}}</p>
 
-</body>
-</html>
+    {{else}}
+
+        <p>User not found!</p>
+
+    {{/if}}
+
+{{/partial}}
+
+{{> base}}

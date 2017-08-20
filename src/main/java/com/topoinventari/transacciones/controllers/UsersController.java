@@ -1,5 +1,6 @@
 package com.topoinventari.transacciones.controllers;
 
+import com.topoinventari.transacciones.model.Transaction;
 import com.topoinventari.transacciones.model.User;
 import com.topoinventari.transacciones.util.HandlebarsUtil;
 import com.topoinventari.transacciones.util.MustacheUtil;
@@ -35,13 +36,11 @@ public class UsersController {
 
     @GET
     public String userList() {
-        String html = "Lista de usuarios";
 
-        for (User user:users.values()) {
-            html += "<li>" + user.getId() +" - " + user.toString() + "</li>";
-        }
+        final Map<String, Object> values = new HashMap<>();
+        values.put("users", users.values());
 
-        return html;
+        return HandlebarsUtil.processTemplate("users/userList", values);
     }
 
     @GET
@@ -49,12 +48,10 @@ public class UsersController {
     public String userDetail(@PathParam("id") int userId){
 
         User user = users.get(userId);
+        final Map<String, Object> values = new HashMap<>();
+        values.put("user", user);
 
-        if (user != null){
-            return HandlebarsUtil.processTemplate("users/userDetail",user);
-        } else {
-            return "<h1>User with id "+ userId +" not found!!!</h1>";
-        }
+        return HandlebarsUtil.processTemplate("users/userDetail",values);
 
     }
 

@@ -1,11 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Users</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
 
-</body>
-</html>
+{{#partial "content"}}
+
+    <h1>USERS</h1>
+
+    {{#if users}}
+        <div>
+            <ul>
+                {{#users}}
+                    <li><a href="users/{{id}}">{{id}} - {{.}}</a></li>
+                {{/users}}
+            </ul>
+        </div>
+
+    {{else}}
+
+        <div>No users to show!</div>
+
+    {{/if}}
+
+{{/partial}}
+
+{{> base}}
