@@ -1,8 +1,8 @@
 package com.topoinventari.transacciones.controllers;
 
-import com.topoinventari.customutils.MustacheUtil;
 import com.topoinventari.transacciones.model.Transaction;
 import com.topoinventari.transacciones.model.User;
+import com.topoinventari.transacciones.util.MustacheUtil;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -40,7 +40,7 @@ public class TransactionController {
     @GET
     public String transactionsList() throws IOException {
 
-        return MustacheUtil.processTemplate("templates/mustache/transactions/transactionList.ftl", transactions.values());
+        return MustacheUtil.processTemplate("transactions/transactionList", transactions.values());
 
     }
 
@@ -52,24 +52,12 @@ public class TransactionController {
         Transaction transaction = transactions.get(transactionId);
 
         if (transaction != null) {
-            return MustacheUtil.processTemplate("templates/mustache/transactions/transactionDetail.ftl",transaction);
+            return MustacheUtil.processTemplate("transactions/transactionDetail",transaction);
         } else {
             return "Transaction not found! :(";
         }
 
 
     }
-
-
-
-
-
-
-    /** Generates a href string that goes to the destination and shows the text */
-    private String generateHref(String destination, String text) {
-        return "<a href='"+ destination + "'>" + text + "</a>";
-    }
-
-
 
 }

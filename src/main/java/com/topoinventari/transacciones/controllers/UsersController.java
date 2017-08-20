@@ -50,7 +50,7 @@ public class UsersController {
         User user = users.get(userId);
 
         if (user != null){
-            return MustacheUtil.processTemplate("templates/mustache/users/userDetail.mustache",user);
+            return MustacheUtil.processTemplate("users/userDetail",user);
         } else {
             return "<h1>User with id "+ userId +" not found!!!</h1>";
         }
