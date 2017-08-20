@@ -40,7 +40,7 @@ public class TransactionController {
     @GET
     public String transactionsList() throws IOException {
 
-        return MustacheUtil.processTemplate("templates/mustache/transactions/transactionList.html", transactions.values());
+        return MustacheUtil.processTemplate("templates/mustache/transactions/transactionList.ftl", transactions.values());
 
     }
 
@@ -52,7 +52,7 @@ public class TransactionController {
         Transaction transaction = transactions.get(transactionId);
 
         if (transaction != null) {
-            return MustacheUtil.processTemplate("templates/mustache/transactions/transactionDetail.html",transaction);
+            return MustacheUtil.processTemplate("templates/mustache/transactions/transactionDetail.ftl",transaction);
         } else {
             return "Transaction not found! :(";
         }
