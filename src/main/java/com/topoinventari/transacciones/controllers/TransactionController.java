@@ -2,6 +2,7 @@ package com.topoinventari.transacciones.controllers;
 
 import com.topoinventari.transacciones.model.Transaction;
 import com.topoinventari.transacciones.model.User;
+import com.topoinventari.transacciones.util.HandlebarsUtil;
 import com.topoinventari.transacciones.util.MustacheUtil;
 
 import javax.ws.rs.GET;
@@ -40,7 +41,10 @@ public class TransactionController {
     @GET
     public String transactionsList() throws IOException {
 
-        return MustacheUtil.processTemplate("transactions/transactionList", transactions.values());
+        final Map<String, Object> values = new HashMap<>();
+        values.put("transactions", transactions.values());
+
+        return HandlebarsUtil.processTemplate("transactions/transactionList", values);
 
     }
 
@@ -49,14 +53,11 @@ public class TransactionController {
     @Path("/{id}")
     public String transactionDetail(@PathParam("id") int transactionId) throws IOException {
 
-        Transaction transaction = transactions.get(transactionId);
+        final Transaction transaction = transactions.get(transactionId);
+        final Map<String, Object> values = new HashMap<>();
+        values.put("transaction", transaction);
 
-        if (transaction != null) {
-            return MustacheUtil.processTemplate("transactions/transactionDetail",transaction);
-        } else {
-            return "Transaction not found! :(";
-        }
-
+        return HandlebarsUtil.processTemplate("transactions/transactionDetail",values);
 
     }
 

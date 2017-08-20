@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Transactions</title>
-    <link rel="stylesheet" href="/assets/listStyle.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
 
