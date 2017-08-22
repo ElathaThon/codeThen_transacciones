@@ -5,10 +5,7 @@ import com.topoinventari.transacciones.model.User;
 import com.topoinventari.transacciones.util.HandlebarsUtil;
 import com.topoinventari.transacciones.util.MustacheUtil;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,10 +32,26 @@ public class UsersController {
     }
 
     @GET
-    public String userList() {
+    public String userList(@QueryParam("search") String search) {
 
         final Map<String, Object> values = new HashMap<>();
-        values.put("users", users.values());
+        if (search != null) {
+
+            //Es filtra la llista de users que tenim
+            for (int i=1; i < users.size()+1; i++) {
+
+                User actualUser = users.get(i);
+                String actualName = actualUser.getName();
+                if (actualName.toLowerCase().equals(search.toLowerCase())) {
+                    values.put("users", actualUser);
+                }
+            }
+
+            System.out.println("Se han encontrado: " + values.size() + " resultados");
+
+        } else {
+            values.put("users", users.values());
+        }
 
         return HandlebarsUtil.processTemplate("users/userList", values);
     }
