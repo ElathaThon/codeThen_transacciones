@@ -1,15 +1,44 @@
 
 <html>
-<head>
-    <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
+    <head>
+        <link rel="stylesheet" href="/assets/css/style.css">
+    </head>
+    <body>
 
-{{#block "content"}}Replace this content in specific templates{{/block}}
+        {{#block "content"}}Replace this content in specific templates{{/block}}
 
-<div class="footer">
-    {{!-- Template rendered with <a href="https://github.com/jknack/handlebars.java" target="_blank">Handlebars</a> --}}
-</div>
+        <div class="footer">
+            {{!-- Template rendered with <a href="https://github.com/jknack/handlebars.java" target="_blank">Handlebars</a> --}}
+        </div>
 
-</body>
+        <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+        <script src="users/js/main.js"></script>
+
+        <script>
+            setupSearchUserButton();
+
+            /** Setup the button in userList to perform the search of the user that is introduced in the input value */
+            function setupSearchUserButton() {
+
+                const div = $(".user.search");
+                const button = div.find("button");
+
+                button.click( function() {
+                    const input = div.find("input").val();
+                    console.log("Search for: " + input);
+
+                    if (input != null) {
+                        const getUrl = window.location;
+                        const baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+                        window.open(baseUrl+"?search="+input , "_self");
+                        //setupFindAllUserButton();
+                    }
+                });
+
+            }
+
+
+        </script>
+
+    </body>
 </html>
