@@ -2,7 +2,9 @@ package com.topoinventari.transacciones.services;
 
 import com.topoinventari.transacciones.model.User;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -12,6 +14,9 @@ public class UserService {
 
     private Map<Integer,User> users;
 
+    /**
+     * Initialize with all the users that we have
+     * */
     public UserService() {
 
         this.users = new HashMap<>();
@@ -22,7 +27,29 @@ public class UserService {
 
     }
 
+    /**
+     * Returns a map with all the users
+     * */
     public Map<Integer, User> getUsers() {
         return users;
+    }
+
+    /**
+     * Return a list with all the users that mach with the name
+     * */
+    public List<User> userSelectionByName(String name) {
+
+        final List<User> values = new ArrayList<User>();
+
+        for (int i = 0; i < users.size(); i++) {
+
+            User actualUser = users.get(i);
+            String actualName = actualUser.getName();
+            if (actualName.toLowerCase().equals(name.toLowerCase())) {
+                values.add(actualUser);
+            }
+        }
+
+        return values;
     }
 }
