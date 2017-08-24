@@ -17,10 +17,8 @@ function setupSearchUserButton() {
         const input = div.find("input").val();
         console.log("Search for: " + input);
 
-        if (input != null) {
-            window.open(location.href = '/users?search=' +input , "_self");
-            //setupFindAllUserButton();
-        }
+        window.open(location.href = '/users?search=' +input , "_self");
+
     });
 
 }
