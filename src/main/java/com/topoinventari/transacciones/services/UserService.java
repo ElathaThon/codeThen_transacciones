@@ -52,4 +52,11 @@ public class UserService {
 
         return values;
     }
+
+    /**
+     * Return the user with the actual id, only can be 1 because the id is a primary key
+     * */
+    public User userSelectionById(Integer id) {
+        return users.get(id);
+    }
 }
