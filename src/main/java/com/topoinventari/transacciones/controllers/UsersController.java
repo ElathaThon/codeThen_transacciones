@@ -2,6 +2,7 @@ package com.topoinventari.transacciones.controllers;
 
 import com.topoinventari.transacciones.model.Transaction;
 import com.topoinventari.transacciones.model.User;
+import com.topoinventari.transacciones.services.UserService;
 import com.topoinventari.transacciones.util.HandlebarsUtil;
 import com.topoinventari.transacciones.util.MustacheUtil;
 
@@ -21,24 +22,6 @@ import java.util.Map;
 public class UsersController {
 
     /**
-     * For the moment the users is initalized by hand. We need a Map with all users for the class
-     * */
-    private Map<Integer,User> users;
-
-    /**
-     * Constructor and the iniziallition of all the users
-     * */
-    public UsersController() {
-
-        this.users = new HashMap<>();
-        users.put(1, new User(1, "Pepe", 60));
-        users.put(2, new User(2, "Mary", 30));
-        users.put(3, new User(3, "Lucy", 40));
-        users.put(4, new User(4, "Johny", 50));
-
-    }
-
-    /**
      * We get all the users. Using the GET method and the key search we can obtain the list filtered by his name
      * URL + ?search=
      * */
@@ -46,6 +29,9 @@ public class UsersController {
     public String userList(@QueryParam("search") String search) {
 
         final Map<String, Object> values = new HashMap<>();
+
+        UserService userService = new UserService();
+        Map<Integer,User> users = userService.getUsers();
 
         if (search != null) {
             //Es filtra la llista de users que tenim
@@ -72,6 +58,9 @@ public class UsersController {
     @GET
     @Path("/{id}")
     public String userDetail(@PathParam("id") int userId){
+
+        UserService userService = new UserService();
+        Map<Integer,User> users = userService.getUsers();
 
         User user = users.get(userId);
         final Map<String, Object> values = new HashMap<>();
