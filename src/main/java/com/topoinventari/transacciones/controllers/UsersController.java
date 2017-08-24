@@ -35,6 +35,7 @@ public class UsersController {
 
         if (search != null) {
             //Es filtra la llista de users que tenim
+            //TODO: En el UserService esta el filterByName, fer que aqui l'agafi amb aquella funcio
             for (int i = 1; i < users.size() + 1; i++) {
 
                 User actualUser = users.get(i);

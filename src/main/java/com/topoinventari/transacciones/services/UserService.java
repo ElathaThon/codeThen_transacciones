@@ -31,7 +31,7 @@ public class UserService {
      * Returns a map with all the users
      * */
     public Map<Integer, User> getUsers() {
-        return users;
+        return this.users;
     }
 
     /**
