@@ -1,8 +1,6 @@
 package com.topoinventari.transacciones.model;
 
-/**
- * Created by elatha on 8/8/17.
- */
+
 public class Transaction {
 
     private int id;
