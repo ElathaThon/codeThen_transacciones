@@ -35,10 +35,10 @@ public class UsersController {
     public String userList(@QueryParam("search") String search) {
 
         final Map<String, Object> values = new HashMap<>();
-        if (search != null) {
 
+        if (search != null) {
             //Es filtra la llista de users que tenim
-            for (int i=1; i < users.size()+1; i++) {
+            for (int i = 1; i < users.size() + 1; i++) {
 
                 User actualUser = users.get(i);
                 String actualName = actualUser.getName();
@@ -48,7 +48,6 @@ public class UsersController {
             }
 
             System.out.println("Se han encontrado: " + values.size() + " resultados");
-
         } else {
             values.put("users", users.values());
         }
