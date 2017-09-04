@@ -25,6 +25,7 @@ import java.util.Map;
 @Produces(MediaType.TEXT_HTML)
 public class TransactionController {
 
+//TODO: El service amb private general i el omplim amb el constructor
 
     /**
      * With the URL we get all the transactions
