@@ -29,7 +29,7 @@ public class TransactionController {
 	}
 
 	/**
-	 * With the URL we get all the transactions
+	 * With the URL we get all the transactions that match with the search param if it exists, if there are any param it gets all the transactions
 	 */
 	@GET
 	public String transactionsList(@QueryParam("search") String search) {

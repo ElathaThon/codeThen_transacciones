@@ -1,6 +1,7 @@
 package com.topoinventari.transacciones;
 
 
+import com.topoinventari.transacciones.controllers.TransactionApi;
 import com.topoinventari.transacciones.controllers.TransactionController;
 import com.topoinventari.transacciones.controllers.UsersController;
 import com.topoinventari.transacciones.services.TransactionService;
@@ -30,15 +31,32 @@ public class TransaccionesApplication extends Application<TransaccionesConfigura
 	@Override
 	public void run(TransaccionesConfiguration configuration, Environment environment) {
 
+		/**
+		 * The services that we need
+		 * */
 		TransactionService transactionService = new TransactionService();
 		UserService userService = new UserService();
 
+		/**
+		 * Controllers
+		 * */
 		TransactionController transactionController = new TransactionController(transactionService);
 		UsersController usersController = new UsersController(userService);
 
-		//Tell dropwizard to setup my resource
+		/**
+		 * APIs
+		 * */
+		TransactionApi transactionApi = new TransactionApi(transactionService);
+
+		/**
+		 * Setup controllers and api to dropwizard
+		 * */
+		//Controllers
 		environment.jersey().register(transactionController);
 		environment.jersey().register(usersController);
+
+		//API
+		environment.jersey().register(transactionApi);
 
 
 	}
