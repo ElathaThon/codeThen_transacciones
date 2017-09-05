@@ -8,7 +8,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.Collection;
 
 /**
- * The API for the transactions
+ * The API for the {@link Transaction}
  */
 
 @Path("/api/transactions")
@@ -22,7 +22,7 @@ public class TransactionApi {
 	}
 
 	/**
-	 * With the URL we get all the transactions that match with the search param if it exists, if there are any param it gets all the transactions
+	 * With the URL we get all the {@link Transaction} that match with the search param if it exists, if there are any param it gets all the {@link Transaction}
 	 */
 	@GET
 	public Collection<Transaction> transactionsList(@QueryParam("search") String search){
@@ -32,7 +32,7 @@ public class TransactionApi {
 	}
 
 	/**
-	 * to get the transaction with the id in the pathParam
+	 * to get the {@link Transaction} with the id in the pathParam
 	 */
 	@GET
 	@Path("{id}")

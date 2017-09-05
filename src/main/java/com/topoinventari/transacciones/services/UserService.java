@@ -6,7 +6,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * To work with users
+ * To work with {@link User}
  */
 public class UserService {
 

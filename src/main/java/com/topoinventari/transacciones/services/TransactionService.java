@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * To work with transactions
+ * To work with {@link Transaction}
  */
 public class TransactionService {
 

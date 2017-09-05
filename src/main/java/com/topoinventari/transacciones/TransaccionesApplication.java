@@ -3,6 +3,7 @@ package com.topoinventari.transacciones;
 
 import com.topoinventari.transacciones.controllers.TransactionApi;
 import com.topoinventari.transacciones.controllers.TransactionController;
+import com.topoinventari.transacciones.controllers.UsersApi;
 import com.topoinventari.transacciones.controllers.UsersController;
 import com.topoinventari.transacciones.services.TransactionService;
 import com.topoinventari.transacciones.services.UserService;
@@ -47,6 +48,7 @@ public class TransaccionesApplication extends Application<TransaccionesConfigura
 		 * APIs
 		 * */
 		TransactionApi transactionApi = new TransactionApi(transactionService);
+		UsersApi usersApi = new UsersApi(userService);
 
 		/**
 		 * Setup controllers and api to dropwizard
@@ -57,6 +59,7 @@ public class TransaccionesApplication extends Application<TransaccionesConfigura
 
 		//API
 		environment.jersey().register(transactionApi);
+		environment.jersey().register(usersApi);
 
 
 	}
