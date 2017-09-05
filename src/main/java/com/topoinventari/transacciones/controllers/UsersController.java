@@ -8,6 +8,7 @@ import com.topoinventari.transacciones.util.MustacheUtil;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,26 +34,10 @@ public class UsersController {
 	@GET
 	public String userList(@QueryParam("search") String search) {
 
+		final Collection<User> usersToDisplay = userService.findByName(search);
+
 		final Map<String, Object> values = new HashMap<>();
-
-		Map<Integer, User> users = userService.getUsers();
-
-		if (search != null) {
-			//Es filtra la llista de users que tenim
-			//TODO: En el UserService esta el filterByName, fer que aqui l'agafi amb aquella funcio
-			for (int i = 1; i < users.size() + 1; i++) {
-
-				User actualUser = users.get(i);
-				String actualName = actualUser.getName();
-				if (actualName.toLowerCase().equals(search.toLowerCase())) {
-					values.put("users", actualUser);
-				}
-			}
-
-			System.out.println("Se han encontrado: " + values.size() + " resultados");
-		} else {
-			values.put("users", users.values());
-		}
+		values.put("users", usersToDisplay);
 
 		return HandlebarsUtil.processTemplate("users/userList", values);
 	}
@@ -64,9 +49,8 @@ public class UsersController {
 	@Path("/{id}")
 	public String userDetail(@PathParam("id") int userId) {
 
-		Map<Integer, User> users = userService.getUsers();
+		final User user = userService.getById(userId);
 
-		User user = users.get(userId);
 		final Map<String, Object> values = new HashMap<>();
 		values.put("user", user);
 

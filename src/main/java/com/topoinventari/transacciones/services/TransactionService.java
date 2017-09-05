@@ -23,10 +23,10 @@ public class TransactionService {
 
 		UserService userService = new UserService();
 
-		User pepe = userService.userSelectionById(1);
-		User mary = userService.userSelectionById(2);
-		User lucy = userService.userSelectionById(3);
-		User johny = userService.userSelectionById(4);
+		User pepe = userService.getById(1);
+		User mary = userService.getById(2);
+		User lucy = userService.getById(3);
+		User johny = userService.getById(4);
 
 		this.transactions = new HashMap<>();
 		transactions.put(1, new Transaction(1, pepe, mary, 10));

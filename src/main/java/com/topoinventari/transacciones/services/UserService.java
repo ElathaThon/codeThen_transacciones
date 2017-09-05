@@ -2,10 +2,8 @@ package com.topoinventari.transacciones.services;
 
 import com.topoinventari.transacciones.model.User;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * To work with users
@@ -35,28 +33,27 @@ public class UserService {
 	}
 
 	/**
-	 * Return a list with all the users that mach with the name
+	 * Return a Collection with all the users that match with the name
 	 */
-	public List<User> userSelectionByName(String name) {
+	public Collection<User> findByName(String search) {
 
-		final List<User> values = new ArrayList<User>();
+		final Collection<User> result;
 
-		for (int i = 0; i < users.size(); i++) {
-
-			User actualUser = users.get(i);
-			String actualName = actualUser.getName();
-			if (actualName.toLowerCase().equals(name.toLowerCase())) {
-				values.add(actualUser);
-			}
+		if (search != null) {
+			result = this.users.values().stream()
+					.filter(user -> user.getName().toLowerCase().contains(search.toLowerCase()))
+					.collect(Collectors.toList());
+		} else {
+			result = this.users.values();
 		}
 
-		return values;
+		return result;
 	}
 
 	/**
 	 * Return the user with the actual id, only can be 1 because the id is a primary key
 	 */
-	public User userSelectionById(Integer id) {
+	public User getById(int id) {
 		return users.get(id);
 	}
 }
