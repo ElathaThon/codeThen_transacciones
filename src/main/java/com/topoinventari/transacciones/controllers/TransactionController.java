@@ -25,15 +25,18 @@ import java.util.Map;
 @Produces(MediaType.TEXT_HTML)
 public class TransactionController {
 
-//TODO: El service amb private general i el omplim amb el constructor
+    private TransactionService transactionService;
 
-    /**
+	public TransactionController(TransactionService transactionService) {
+		this.transactionService = transactionService;
+	}
+
+	/**
      * With the URL we get all the transactions
      * */
     @GET
     public String transactionsList() {
 
-        TransactionService transactionService = new TransactionService();
         Map<Integer, Transaction> transactions = transactionService.getTransactions();
 
         final Map<String, Object> values = new HashMap<>();
@@ -51,7 +54,6 @@ public class TransactionController {
     @Path("/{id}")
     public String transactionDetail(@PathParam("id") int transactionId) {
 
-        TransactionService transactionService = new TransactionService();
         Map<Integer, Transaction> transactions = transactionService.getTransactions();
 
         final Transaction transaction = transactions.get(transactionId);

@@ -21,7 +21,13 @@ import java.util.Map;
 @Produces(MediaType.TEXT_HTML)
 public class UsersController {
 
-    /**
+    private UserService userService = new UserService();
+
+	public UsersController(UserService userService) {
+		this.userService = userService;
+	}
+
+	/**
      * We get all the users. Using the GET method and the key search we can obtain the list filtered by his name
      * URL + ?search=
      * */
@@ -30,7 +36,6 @@ public class UsersController {
 
         final Map<String, Object> values = new HashMap<>();
 
-        UserService userService = new UserService();
         Map<Integer,User> users = userService.getUsers();
 
         if (search != null) {
@@ -60,7 +65,6 @@ public class UsersController {
     @Path("/{id}")
     public String userDetail(@PathParam("id") int userId){
 
-        UserService userService = new UserService();
         Map<Integer,User> users = userService.getUsers();
 
         User user = users.get(userId);
