@@ -4,8 +4,10 @@ package com.topoinventari.transacciones.services;
 import com.topoinventari.transacciones.model.Transaction;
 import com.topoinventari.transacciones.model.User;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * To work with transactions
@@ -40,5 +42,29 @@ public class TransactionService {
 		return this.transactions;
 	}
 
+	/**
+	 * Return a Collection with the transactions that match with the name of the user in From transaction
+	 * */
+	public Collection<Transaction> findByFrom(String search) {
+
+		final Collection<Transaction> result;
+
+		if (search != null) {
+			result = this.transactions.values().stream()
+					.filter(transaction -> transaction.getFrom().getName().toLowerCase().contains(search.toLowerCase()))
+					.collect(Collectors.toList());
+		} else {
+			result = this.transactions.values();
+		}
+
+		return result;
+	}
+
+	/**
+	 * Returns the Transaction with the id given
+	 * */
+	public Transaction getById(int id){
+		return transactions.get(id);
+	}
 
 }

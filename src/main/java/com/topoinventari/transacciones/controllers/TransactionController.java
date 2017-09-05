@@ -6,12 +6,10 @@ import com.topoinventari.transacciones.services.TransactionService;
 import com.topoinventari.transacciones.util.HandlebarsUtil;
 import com.topoinventari.transacciones.util.MustacheUtil;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,12 +32,12 @@ public class TransactionController {
 	 * With the URL we get all the transactions
 	 */
 	@GET
-	public String transactionsList() {
+	public String transactionsList(@QueryParam("search") String search) {
 
-		Map<Integer, Transaction> transactions = transactionService.getTransactions();
+		final Collection<Transaction> transactionsToDisplay = transactionService.findByFrom(search);
 
 		final Map<String, Object> values = new HashMap<>();
-		values.put("transactions", transactions.values());
+		values.put("transactions", transactionsToDisplay);
 
 		return HandlebarsUtil.processTemplate("transactions/transactionList", values);
 
@@ -53,9 +51,8 @@ public class TransactionController {
 	@Path("/{id}")
 	public String transactionDetail(@PathParam("id") int transactionId) {
 
-		Map<Integer, Transaction> transactions = transactionService.getTransactions();
+		final Transaction transaction = transactionService.getById(transactionId);
 
-		final Transaction transaction = transactions.get(transactionId);
 		final Map<String, Object> values = new HashMap<>();
 		values.put("transaction", transaction);
 
