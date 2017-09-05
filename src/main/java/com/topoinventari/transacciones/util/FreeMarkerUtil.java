@@ -30,7 +30,9 @@ public class FreeMarkerUtil {
 		}
 	}
 
-	/** Based on: http://freemarker.org/docs/pgui_quickstart_createconfiguration.html */
+	/**
+	 * Based on: http://freemarker.org/docs/pgui_quickstart_createconfiguration.html
+	 */
 	private static Configuration buildConfig() {
 
 		final Configuration cfg = new Configuration(Configuration.VERSION_2_3_25);

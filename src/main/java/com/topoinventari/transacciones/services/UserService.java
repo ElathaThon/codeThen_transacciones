@@ -12,51 +12,51 @@ import java.util.Map;
  */
 public class UserService {
 
-    private Map<Integer,User> users;
+	private Map<Integer, User> users;
 
-    /**
-     * Initialize with all the users that we have
-     * */
-    public UserService() {
+	/**
+	 * Initialize with all the users that we have
+	 */
+	public UserService() {
 
-        this.users = new HashMap<>();
-        users.put(1, new User(1, "Pepe", 60));
-        users.put(2, new User(2, "Mary", 30));
-        users.put(3, new User(3, "Lucy", 40));
-        users.put(4, new User(4, "Johny", 50));
+		this.users = new HashMap<>();
+		users.put(1, new User(1, "Pepe", 60));
+		users.put(2, new User(2, "Mary", 30));
+		users.put(3, new User(3, "Lucy", 40));
+		users.put(4, new User(4, "Johny", 50));
 
-    }
+	}
 
-    /**
-     * Returns a map with all the users
-     * */
-    public Map<Integer, User> getUsers() {
-        return this.users;
-    }
+	/**
+	 * Returns a map with all the users
+	 */
+	public Map<Integer, User> getUsers() {
+		return this.users;
+	}
 
-    /**
-     * Return a list with all the users that mach with the name
-     * */
-    public List<User> userSelectionByName(String name) {
+	/**
+	 * Return a list with all the users that mach with the name
+	 */
+	public List<User> userSelectionByName(String name) {
 
-        final List<User> values = new ArrayList<User>();
+		final List<User> values = new ArrayList<User>();
 
-        for (int i = 0; i < users.size(); i++) {
+		for (int i = 0; i < users.size(); i++) {
 
-            User actualUser = users.get(i);
-            String actualName = actualUser.getName();
-            if (actualName.toLowerCase().equals(name.toLowerCase())) {
-                values.add(actualUser);
-            }
-        }
+			User actualUser = users.get(i);
+			String actualName = actualUser.getName();
+			if (actualName.toLowerCase().equals(name.toLowerCase())) {
+				values.add(actualUser);
+			}
+		}
 
-        return values;
-    }
+		return values;
+	}
 
-    /**
-     * Return the user with the actual id, only can be 1 because the id is a primary key
-     * */
-    public User userSelectionById(Integer id) {
-        return users.get(id);
-    }
+	/**
+	 * Return the user with the actual id, only can be 1 because the id is a primary key
+	 */
+	public User userSelectionById(Integer id) {
+		return users.get(id);
+	}
 }

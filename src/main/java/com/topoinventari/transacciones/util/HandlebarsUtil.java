@@ -17,7 +17,7 @@ public class HandlebarsUtil {
 	 * The value can be a collection, a map or another object (getters will be used).
 	 */
 	public static String processTemplate(String filename, Object value) {
-		                       
+
 		try {
 			final Template template = handlebars.compile(filename);
 			return template.apply(value);

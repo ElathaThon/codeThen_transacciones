@@ -12,26 +12,26 @@ import java.io.StringWriter;
  */
 public class MustacheUtil {
 
-    private static final MustacheFactory mf = new DefaultMustacheFactory();
-    private static final String templateDirectory = "templates/mustache/";
+	private static final MustacheFactory mf = new DefaultMustacheFactory();
+	private static final String templateDirectory = "templates/mustache/";
 
-    /**
-     * Takes template and subtitute the placehoders {{}} for the values.
-     * The value can be a collection, a map or another object (getters will be used).
-     * */
-    public static String processTemplate(String filename, Object value) {
+	/**
+	 * Takes template and subtitute the placehoders {{}} for the values.
+	 * The value can be a collection, a map or another object (getters will be used).
+	 */
+	public static String processTemplate(String filename, Object value) {
 
-        Mustache mustache = mf.compile(templateDirectory + filename + ".mustache");
-        StringWriter writer = new StringWriter();
+		Mustache mustache = mf.compile(templateDirectory + filename + ".mustache");
+		StringWriter writer = new StringWriter();
 
-        try {
-            mustache.execute(writer, value).flush();
-            return writer.toString();
-        } catch (IOException e) {
-            throw new RuntimeException("Error while writing template result", e);
-        }
+		try {
+			mustache.execute(writer, value).flush();
+			return writer.toString();
+		} catch (IOException e) {
+			throw new RuntimeException("Error while writing template result", e);
+		}
 
-    }
+	}
 
 
 }

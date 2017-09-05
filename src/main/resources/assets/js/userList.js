@@ -1,4 +1,3 @@
-
 /**
  * setup all elements that we need
  * */
@@ -13,11 +12,11 @@ function setupSearchUserButton() {
     const div = $(".user.search");
     const button = div.find("button");
 
-    button.click( function() {
+    button.click(function () {
         const input = div.find("input").val();
         console.log("Search for: " + input);
 
-        window.open(location.href = '/users?search=' +input , "_self");
+        window.open(location.href = '/users?search=' + input, "_self");
 
     });
 
@@ -30,10 +29,10 @@ function setupFindAllUserButton() {
     const div = $(".user.search");
     const button = div.find("button");
 
-    button.click( function() {
+    button.click(function () {
         const getUrl = window.location;
-        const baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+        const baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
         button.html('Find all');
-        window.open(baseUrl , "_self");
+        window.open(baseUrl, "_self");
     });
 }
