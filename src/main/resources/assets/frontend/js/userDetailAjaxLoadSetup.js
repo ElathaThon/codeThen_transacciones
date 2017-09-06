@@ -3,24 +3,25 @@
  * Setup the load of the user detail
  * */
 
-console.log("dentro!");
 
 setupLoadBody();
 
 function setupLoadBody() {
-    const result = document.querySelector("body");
-    result.onload = function() {
-        const param = getParameterByName("id");
-        console.log(param);
+    const body = document.querySelector("body");
+    body.onload = function() {
 
+        const idParam = new URLSearchParams(window.location.search).get("id");
+        console.log(idParam);
 
+        loadUsers(idParam);
 
     };
 }
 
 
 /**
- * To get the GET parameters in the URL
+ * To get the GET parameters in the URL (old javaScript version)
+ * To use it: const param = getParameterByName("ParamName");
  * https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
  * */
 function getParameterByName(name, url) {
