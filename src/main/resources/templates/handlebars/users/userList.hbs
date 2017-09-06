@@ -9,11 +9,19 @@
         <button>Search</button>
     </div>
 
+    <div>
+        <form class="search-box">
+            <h2>Buscar usuarios API:</h2>
+            <input type="text" placeholder="User to seach">
+            <button>Search</button>
+        </form>
+    </div>
+
     {{#if users}}
         <div>
             <ul>
                 {{#users}}
-                    <li><a href="users/{{id}}">{{id}} - {{.}}</a></li>
+                    <li onclick="openInNewTabWithAjax({{id}})"><a href="users/{{id}}">{{id}} - {{.}}</a></li>
                 {{/users}}
             </ul>
         </div>
@@ -29,3 +37,4 @@
 {{> base}}
 
 <script src="assets/js/userList.js"></script>
+<script src="assets/js/setupUserSearchBox.js"></script>

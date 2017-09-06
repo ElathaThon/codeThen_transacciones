@@ -1,8 +1,8 @@
 
 let usersPromise = loadUsers();
 
-booksPromise.then(books => {
-	displayBooks(books);
+usersPromise.then(users => {
+	displayUsers(users);
 });
 
 // Equivalent to the code above
@@ -10,9 +10,9 @@ booksPromise.then(books => {
 
 
 /** Gets books from API and returns a promise of books */
-function loadBooks() {
+function loadUsers() {
 
-	let url = '/api/books';
+	let url = '/api/users';
 
 	// We return the promise that fetch() gives us
 	return fetch(url)
@@ -24,12 +24,12 @@ function loadBooks() {
 }
 
 /** Displays books on the HTML */
-function displayBooks(books) {
+function displayUsers(users) {
 
 	let html = "<ul>";
 
-	for (const book of books) {
-		html += "<li>" + book.title + "</li>";
+	for (const user of users) {
+		html += "<li>" + user.name + "</li>";
 	}
 
 	html += "</ul>";
@@ -43,9 +43,9 @@ function displayBooks(books) {
 // although the way we use above is a bit more elegant.
 
 /** Gets books from API and displays them */
-function loadBooksAndDisplayThem() {
+function loadUsersAndDisplayThem() {
 
-	let url = '/api/books';
+	let url = '/api/users';
 
 	fetch(url)
 		.then(response => response.json())
