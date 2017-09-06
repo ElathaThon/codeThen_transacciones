@@ -21,7 +21,7 @@
         <div>
             <ul>
                 {{#users}}
-                    <li onclick="openInNewTabWithAjax({{id}})"><a href="users/{{id}}">{{id}} - {{.}}</a></li>
+                    <li onclick="detailWithAjax({{id}})"><a href="users/{{id}}">{{id}} - {{.}}</a></li>
                 {{/users}}
             </ul>
         </div>

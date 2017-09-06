@@ -2,10 +2,12 @@
 
 /**
  * Setup the load of body to find the id param and load the user detail with this id
+ * And setup the back button to go to the list of users
  * */
 
 
 setupLoadBody();
+setupBackButton();
 
 /**
  * Setup the onload to the body and load the user information
@@ -19,12 +21,22 @@ function setupLoadBody() {
 
         let usersPromise = loadUsers(idParam);
 
-
         usersPromise.then(users => {
             displayUsers(users);
         });
 
     };
+}
+
+/**
+ * Setup the button back to go to the user list
+ * */
+function setupBackButton() {
+    const backButton = document.querySelector("button.back");
+    console.log(backButton);
+    backButton.onclick = function () {
+        window.open(location.href = '/users', "_self");
+    }
 }
 
 /**
@@ -56,3 +68,4 @@ function displayUsers(user) {
 	const content = document.getElementById("content");
 	content.innerHTML = html;
 }
+
