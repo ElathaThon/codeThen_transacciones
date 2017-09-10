@@ -1,6 +1,7 @@
 
 
 const ENTER_KEY_CODE = 13;
+const rootPath = "/dw/api";
 
 
 /**
@@ -61,7 +62,7 @@ function setupFindAllUserButton() {
 function performSearchApi() {
     const input = document.querySelector(".search-box input");
     const searchTerm = input.value;
-    location.href = 'api/users?search=' + searchTerm;
+    location.href = rootPath + '/users?search=' + searchTerm;
 }
 
 /**

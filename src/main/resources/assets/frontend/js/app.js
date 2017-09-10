@@ -1,5 +1,7 @@
 
 
+const rootPath = "/dw/api";
+
 /**
  * Setup the load of body to find the id param and load the user detail with this id
  * And setup the back button to go to the list of users
@@ -44,7 +46,7 @@ function setupBackButton() {
  *  */
 function loadUsers(id) {
 
-	let url = '/api/users/'+id;
+	let url = rootPath + '/users/'+id;
 
 	// We return the promise that fetch() gives us
 	return fetch(url)

@@ -7,8 +7,8 @@
         <div>
             <ul>
                 {{#transactions}}
-                    <li>{{id}} - <a href='/users/{{from.id}}'>{{from.name}}</a> gives <a href='/transactions/{{id}}'>{{amount}} bitcoins</a> to
-                        <a href='/users/{{to.id}}'>{{to.name}}</a></li>
+                    <li>{{id}} - <a href='users/{{from.id}}'>{{from.name}}</a> gives <a href='transactions/{{id}}'>{{amount}} bitcoins</a> to
+                        <a href='users/{{to.id}}'>{{to.name}}</a></li>
                 {{/transactions}}
             </ul>
         </div>

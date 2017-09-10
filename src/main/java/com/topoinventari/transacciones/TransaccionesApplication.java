@@ -26,7 +26,7 @@ public class TransaccionesApplication extends Application<TransaccionesConfigura
 
 	@Override
 	public void initialize(Bootstrap<TransaccionesConfiguration> bootstrap) {
-		bootstrap.addBundle(new AssetsBundle("/assets/", "/assets/"));
+		bootstrap.addBundle(new AssetsBundle("/assets/", "/"));
 	}
 
 	@Override
